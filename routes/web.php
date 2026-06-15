@@ -5,6 +5,8 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Auth\RegisteredUserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,3 +30,5 @@ Route::get('search', [UsersController::class, 'index']);
 
 Route::get('follow-list', [PostsController::class, 'index']);
 Route::get('follower-list', [PostsController::class, 'index']);
+
+Route::post('added', [RegisteredUserController::class, 'store']);
