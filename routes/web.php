@@ -6,6 +6,7 @@ use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,11 +22,13 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 
 require __DIR__ . '/auth.php';
 
+Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
+
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('top', [PostsController::class, 'index']);
+    Route::get('top', [PostsController::class, 'index'])->name('top');
 
-    Route::get('profile', [ProfileController::class, 'profile']);
+    Route::get('profile', [ProfileController::class, 'profile'])->name('profile');
 
     Route::get('search', [UsersController::class, 'index']);
 
